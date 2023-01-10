@@ -1,11 +1,9 @@
-import { NegociacaoController } from "./controllers/negociacao-controller.js";
 import { Cargo } from "./models/cargo.js";
 import { Cliente } from "./models/cliente.js";
 import { ContaCorrente } from "./models/contaCorrente.js";
 import { ContaPoupanca } from "./models/contaPoupanca.js";
 import { Endereco } from "./models/endereco.js";
 import { Funcionario } from "./models/funcionario.js";
-const controller = new NegociacaoController();
 console.log("PRIMEIRA APLICAÇÃO");
 const gerenteCargo = new Cargo("Gerente");
 const atendenteCargo = new Cargo("Atendente");
@@ -40,3 +38,13 @@ clientePoupanca.realizarDeposito(contaPoupanca, 1000);
 clienteCorrente.transferir(contaCorrente, contaPoupanca, 500);
 clientePoupanca.verificarSaldo(contaPoupanca);
 clienteCorrente.verificarSaldo(contaCorrente);
+console.log("QUINTA APLICAÇÃO");
+const contaPoupancaRentavel = new ContaPoupanca("54321-0", 1);
+const clientePoupancaRentavel = new Cliente("423.912.323-43", "ClienteContaPoupancaRentavel", "1212121212", true, endereco1, contaPoupancaRentavel);
+for (let index = 1; index < 13; index++) {
+    const novaData = '2022-' + index + '-10';
+    clientePoupancaRentavel.realizarDeposito(contaPoupancaRentavel, 200, new Date(novaData));
+}
+clientePoupancaRentavel.realizarSaque(contaPoupancaRentavel, 100, new Date('2022-03-05'));
+clientePoupancaRentavel.realizarSaque(contaPoupancaRentavel, 200, new Date('2022-07-08'));
+clientePoupancaRentavel.verificarSaldo(contaPoupancaRentavel);

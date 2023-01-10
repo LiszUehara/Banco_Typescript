@@ -15,12 +15,12 @@ export class Conta {
     get numero() {
         return this._numero;
     }
-    depositar(valor) {
-        let credito = new Credito(valor, new Date());
+    depositar(valor, dataTransacao = new Date()) {
+        let credito = new Credito(valor, dataTransacao);
         this.creditos.push(credito);
     }
-    sacar(valor) {
-        let debito = new Debito(valor, new Date());
+    sacar(valor, dataTransacao = new Date()) {
+        let debito = new Debito(valor, dataTransacao);
         this.debitos.push(debito);
     }
 }

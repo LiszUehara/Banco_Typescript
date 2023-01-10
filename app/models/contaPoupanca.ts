@@ -13,7 +13,30 @@ export class ContaPoupanca extends Conta{
     }
 
     calcularRendimento(): number{
-        console.log()
+        
+        const creditosOrganizados = this.creditos.sort((a,b) => a.data.getTime() - b.data.getTime())
+        const debitosOrganizados = this.debitos.sort((a,b) => a.data.getTime() - b.data.getTime())
+
+        let rendimento = 0;
+
+        for (let index = 0; index < 12; index++) {
+            let saldo = 0
+            creditosOrganizados.forEach(credito => {
+                if(credito.data.getMonth() == index){
+                    saldo+=credito.valor
+                }
+            });
+
+            debitosOrganizados.forEach(debito => {
+                if(debito.data.getMonth() == index){
+                    saldo-=debito.valor
+                }                
+            });
+
+        
+
+        }
+            
         return 0;
     }
 

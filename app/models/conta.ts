@@ -22,19 +22,20 @@ export abstract class Conta{
         return this._numero;
     }
 
-    depositar(valor: number){
+    depositar(valor: number, dataTransacao: Date = new Date()){
         let credito = new Credito(
             valor,
-            new Date()
+            dataTransacao
         )
         this.creditos.push(credito)
     }
 
-    sacar(valor: number){
+    sacar(valor: number, dataTransacao: Date = new Date()){
         let debito = new Debito(
             valor,
-            new Date()
+            dataTransacao
         )
         this.debitos.push(debito)
     }
+    
 }

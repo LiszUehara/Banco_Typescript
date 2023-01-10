@@ -22,13 +22,13 @@ export class Cliente extends Pessoa {
     adicionarConta(conta) {
         this.contas.push(conta);
     }
-    realizarDeposito(contaUsada, valor) {
+    realizarDeposito(contaUsada, valor, dataTransacao = new Date()) {
         const id = this.contas.indexOf(contaUsada);
-        this.contas[id].depositar(valor);
+        this.contas[id].depositar(valor, dataTransacao);
     }
-    realizarSaque(contaUsada, valor) {
+    realizarSaque(contaUsada, valor, dataTransacao = new Date()) {
         const id = this.contas.indexOf(contaUsada);
-        this.contas[id].sacar(valor);
+        this.contas[id].sacar(valor, dataTransacao);
     }
     verificarSaldo(contaUsada) {
         const id = this.contas.indexOf(contaUsada);

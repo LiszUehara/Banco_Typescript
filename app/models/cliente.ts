@@ -36,14 +36,14 @@ export class Cliente extends Pessoa implements IUsuario{
         this.contas.push(conta)
     }
 
-    realizarDeposito(contaUsada: Conta,valor: number){
+    realizarDeposito(contaUsada: Conta,valor: number, dataTransacao: Date = new Date()){
         const id = this.contas.indexOf(contaUsada)
-        this.contas[id].depositar(valor)
+        this.contas[id].depositar(valor,dataTransacao)
     }
 
-    realizarSaque(contaUsada: Conta,valor: number){
+    realizarSaque(contaUsada: Conta,valor: number, dataTransacao: Date = new Date()){
         const id = this.contas.indexOf(contaUsada)
-        this.contas[id].sacar(valor)
+        this.contas[id].sacar(valor,dataTransacao)
     }
 
     verificarSaldo(contaUsada: Conta){
